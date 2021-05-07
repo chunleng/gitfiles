@@ -13,7 +13,7 @@ git config --global user.email "$GIT_EMAIL"
 git config --global pull.ff only
 
 # Disable pager and display in standard out
-git config --global core.pager 'cat'
+git config --global core.pager less
 
 # Resolve unicode file name difference in Mac (Compared to Windows/Linux)
 git config --global core.precomposeunicode true
