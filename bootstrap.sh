@@ -15,12 +15,16 @@ git config --global pull.ff only
 # Disable pager and display in standard out
 git config --global core.pager less
 
-# Using Kitty as Difftool
-# https://sw.kovidgoyal.net/kitty/kittens/diff.html?highlight=kitten%20diff#integrating-with-git
+# Using Vim as Difftool
 git config --global diff.tool nvim
 git config --global difftool.prompt false
 git config --global difftool.trustExitCode true
 git config --global difftool.nvim.cmd "nvim +'nnoremap q :qall<cr>' -M -d \$LOCAL \$REMOTE"
+
+# Using Vim as Difftool
+git config --global merge.tool nvim
+git config --global mergetool.nvim.cmd "nvim +Gdiff! \$MERGED"
+
 
 # Resolve unicode file name difference in Mac (Compared to Windows/Linux)
 git config --global core.precomposeunicode true
