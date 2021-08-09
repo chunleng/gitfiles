@@ -4,6 +4,7 @@ set -eu
 
 GIT_NAME=$1
 GIT_EMAIL=$2
+APP_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
 
 git config --global user.name "$GIT_NAME"
@@ -28,6 +29,11 @@ git config --global mergetool.nvim.cmd "nvim +Gdiff! \$MERGED"
 
 # Resolve unicode file name difference in Mac (Compared to Windows/Linux)
 git config --global core.precomposeunicode true
+
+# Exclude
+#
+ln -sfn ${APP_PATH}/gitignore_global ${HOME}/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
 
 ###########
 # Aliases #
