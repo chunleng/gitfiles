@@ -31,9 +31,11 @@ git config --global mergetool.nvim.cmd "nvim +Gdiff! \$MERGED"
 git config --global core.precomposeunicode true
 
 # Exclude
-#
 ln -sfn ${APP_PATH}/gitignore_global ${HOME}/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
+
+# Use SSH instead of HTTPS for github
+git config --global url.git@github.com:.insteadOf https://github.com/
 
 ###########
 # Aliases #
