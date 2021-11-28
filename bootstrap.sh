@@ -52,6 +52,7 @@ git config --global alias.p push
 git config --global alias.pp '!sh -c "git push -u origin $(git branch --show-current)"'
 git config --global alias.pu pull
 git config --global alias.l 'log --graph --oneline --topo-order --pretty="format:%C(auto)%h %cd %<|(45,trunc)%cn%d %s" --date=short --decorate'
+git config --global alias.r restore
 git config --global alias.s status
 
 # Grepping through all past commits
