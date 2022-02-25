@@ -5,7 +5,7 @@ set -eu
 # return as there is no message
 if [ -z $(sed "s/^#.*//" $1) ]; then exit 0; fi
 # return as it has been processed before
-if [ $(head -c1 $1) = "[" ]; then exit 0; fi
+if [ $(head -c1 $1) = "[" -o $(head -c6 $1) = "fixup!" ]; then exit 0; fi
 
 branch_name=$(git branch --show-current)
 message=
