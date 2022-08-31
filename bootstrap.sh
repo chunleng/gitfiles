@@ -34,8 +34,9 @@ git config --global core.precomposeunicode true
 ln -sfn ${APP_PATH}/gitignore_global ${HOME}/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 
-# Use SSH instead of HTTPS for github
-git config --global url.git@github.com:.insteadOf https://github.com/
+# TODO: seems to be problem with cargo? maybe I shouldn't make all https into ssh
+# # Use SSH instead of HTTPS for github
+# git config --global url.git@github.com:.insteadOf https://github.com/
 
 # Global Hook Path
 APP_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
