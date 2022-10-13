@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/pre-rebase ]; then
+    ./.git/hooks/pre-rebase "$@"
+fi

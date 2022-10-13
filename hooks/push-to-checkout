@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/push-to-checkout ]; then
+    ./.git/hooks/push-to-checkout "$@"
+fi

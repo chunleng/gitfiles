@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/pre-merge-commit ]; then
+    ./.git/hooks/pre-merge-commit "$@"
+fi

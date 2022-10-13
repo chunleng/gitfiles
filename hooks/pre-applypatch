@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/pre-applypatch ]; then
+    ./.git/hooks/pre-applypatch "$@"
+fi

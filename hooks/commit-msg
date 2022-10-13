@@ -22,3 +22,7 @@ fi
 
 if [ -z ${message} ]; then exit 0; fi
 echo "${message} $(cat $1)" > $1
+
+if [ -e ./.git/hooks/commit-msg ]; then
+  ./.git/hooks/commit-msg "$@"
+fi

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/pre-receive ]; then
+    ./.git/hooks/pre-receive "$@"
+fi

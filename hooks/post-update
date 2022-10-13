@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/post-update ]; then
+    ./.git/hooks/post-update "$@"
+fi

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/applypatch-msg ]; then
+  ./.git/hooks/applypatch-msg "$@"
+f

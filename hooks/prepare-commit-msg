@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/prepare-commit-msg ]; then
+    ./.git/hooks/prepare-commit-msg "$@"
+fi
