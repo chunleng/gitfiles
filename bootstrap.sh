@@ -39,7 +39,6 @@ git config --global core.excludesfile ~/.gitignore_global
 # git config --global url.git@github.com:.insteadOf https://github.com/
 
 # Global Hook Path
-APP_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 git config --global core.hooksPath ${APP_PATH}/hooks
 
 # Change comment character to ; to allow issue tagging (#123) at the start
