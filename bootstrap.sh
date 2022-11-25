@@ -20,7 +20,7 @@ git config --global core.pager less
 git config --global diff.tool nvim
 git config --global difftool.prompt false
 git config --global difftool.trustExitCode true
-git config --global difftool.nvim.cmd "(export NOAERIAL=1; nvim +'nnoremap q :qall<cr>' -M -d \$LOCAL \$REMOTE)"
+git config --global difftool.nvim.cmd "(export NOAERIAL=1; nvim +'nnoremap q :qall<cr>' +'TSContextDisable' -M -d \$LOCAL \$REMOTE)"
 
 # Using Vim as Difftool
 git config --global merge.tool nvim
