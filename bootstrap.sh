@@ -26,7 +26,6 @@ git config --global difftool.nvim.cmd "(export NOAERIAL=1; nvim +'nnoremap q :qa
 git config --global merge.tool nvim
 git config --global mergetool.nvim.cmd "nvim +Gdiff! \$MERGED"
 
-
 # Resolve unicode file name difference in Mac (Compared to Windows/Linux)
 git config --global core.precomposeunicode true
 
@@ -43,6 +42,9 @@ git config --global core.hooksPath ${APP_PATH}/hooks
 
 # Change comment character to ; to allow issue tagging (#123) at the start
 git config --global core.commentChar ";"
+
+# Allow push even when local branch and remote branch name doesn't match
+git config --global push.default upstream
 
 ###########
 # Aliases #
