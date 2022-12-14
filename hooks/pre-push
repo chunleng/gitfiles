@@ -2,6 +2,11 @@
 
 set -eu
 
+remote=$1
+for commit in `git rev-list $(git branch --show-current) --not --remotes=${remote}`; do
+    git log --format='%B' -n1|commitlint
+done
+
 if [ -e ./.git/hooks/pre-push ]; then
     ./.git/hooks/pre-push "$@"
 fi

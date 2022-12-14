@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+if [ -e ./.git/hooks/post-commit ]; then
+    ./.git/hooks/post-commit "$@"
+fi
