@@ -14,18 +14,18 @@ if [[ -z "${commit_source}" ]]; then
         # Github Format
         if echo ${branch_name} |grep "^issues/[0-9]*" > /dev/null; then
             issue_no=$(echo ${branch_name} | sed "s|issues/\([0-9]*\).*|\\1|")
-            message="#${issue_no}";
+            message="(#${issue_no})";
         fi
         if echo ${branch_name} |grep "^issues/[^/]*/[^/]*/[0-9]*" > /dev/null; then
             repository=$(echo ${branch_name} | sed "s|issues/\([^/]*/[^/]*\).*|\\1|")
             issue_no=$(echo ${branch_name} | sed "s|issues/[^/]*/[^/]*/\([0-9]*\).*|\\1|")
-            message="${repository}#${issue_no}";
+            message="(${repository}#${issue_no})";
         fi
 
     elif echo ${branch_name} |grep "^feature/" > /dev/null; then
         # Jira Format
         issue_no=$(echo ${branch_name} | sed "s|feature/\([a-zA-Z]\+-[0-9]*\).*|\\1|")
-        message="${issue_no}:"
+        message="(${issue_no})"
     fi
 
     if [ -z ${message} ]; then exit 0; fi
