@@ -40,9 +40,6 @@ git config --global core.excludesfile ~/.gitignore_global
 # Global Hook Path
 git config --global core.hooksPath ${APP_PATH}/hooks
 
-# Change comment character to ; to allow issue tagging (#123) at the start
-git config --global core.commentChar ";"
-
 # Allow push even when local branch and remote branch name doesn't match
 git config --global push.default upstream
 
