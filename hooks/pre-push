@@ -4,7 +4,10 @@ set -eu
 
 remote=$1
 for commit in `git rev-list $(git branch --show-current) --not --remotes=${remote}`; do
-    git log --format='%B' -n1|commitlint
+    # If the commit is written by me
+    if [ "`git log --format='%ae' ${commit}^!`" == "`git config user.email`" ]; then
+        git log --format='%B' -n1|commitlint
+    fi
 done
 
 if [ -e ./.git/hooks/pre-push ]; then
