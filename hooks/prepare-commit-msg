@@ -29,7 +29,7 @@ if [[ -z "${commit_source}" ]]; then
     fi
 
     if [ -z ${message} ]; then exit 0; fi
-    echo "${message} $(cat ${commit_file})" > ${commit_file}
+    echo "${message}$(cat ${commit_file})" > ${commit_file}
 fi
 
 if [ -e ./.git/hooks/prepare-commit-msg ]; then
