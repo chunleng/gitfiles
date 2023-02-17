@@ -43,6 +43,9 @@ git config --global core.hooksPath ${APP_PATH}/hooks
 # Allow push even when local branch and remote branch name doesn't match
 git config --global push.default upstream
 
+# Allow git blame to ignore certain commit as they are not useful code change
+git config --global blame.ignoreRevsFile .git-blame-ignore-revs
+
 ###########
 # Aliases #
 ###########
