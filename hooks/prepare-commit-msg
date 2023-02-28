@@ -12,21 +12,21 @@ if [[ -z "${commit_source}" ]]; then
     branch_name=$(git branch --show-current)
     message=
 
-    if echo ${branch_name} |grep "^g/${com_con}/" > /dev/null; then
+    if echo ${branch_name} |grep "^${com_con}/g-" > /dev/null; then
         # Github Format
-        if echo ${branch_name} |grep "^g/${com_con}/[0-9]*" > /dev/null; then
-            issue_no=$(echo ${branch_name} | sed "s~g/${com_con}/\([0-9]*\).*~\\2~")
+        if echo ${branch_name} |grep "^${com_con}/g-[0-9]*" > /dev/null; then
+            issue_no=$(echo ${branch_name} | sed "s~${com_con}/g-\([0-9]*\).*~\\2~")
             message="(#${issue_no})";
         fi
-        if echo ${branch_name} |grep "^g/${com_con}/[^/]*/[^/]*/[0-9]*" > /dev/null; then
-            repository=$(echo ${branch_name} | sed "s~g/${com_con}/\([^/]*/[^/]*\).*~\\2~")
-            issue_no=$(echo ${branch_name} | sed "s~g/${com_con}/[^/]*/[^/]*/\([0-9]*\).*~\\2~")
+        if echo ${branch_name} |grep "^${com_con}/g-[^/]*/[^/]*/[0-9]*" > /dev/null; then
+            repository=$(echo ${branch_name} | sed "s~${com_con}/g-\([^/]*/[^/]*\).*~\\2~")
+            issue_no=$(echo ${branch_name} | sed "s~${com_con}/g-[^/]*/[^/]*/\([0-9]*\).*~\\2~")
             message="(${repository}#${issue_no})";
         fi
 
-    elif echo ${branch_name} |grep "^j/${com_con}/" > /dev/null; then
+    elif echo ${branch_name} |grep "^${com_con}/j-" > /dev/null; then
         # Jira Format
-        issue_no=$(echo ${branch_name} | sed "s~j/\(feat\|test\)/\([a-zA-Z]\+-[0-9]*\).*~\\2~")
+        issue_no=$(echo ${branch_name} | sed "s~\(feat\|test\)/j-\([a-zA-Z]\+-[0-9]*\).*~\\2~")
         message="(${issue_no})"
     fi
 
