@@ -26,12 +26,12 @@ if [[ -z "${commit_source}" ]]; then
 
     elif echo ${branch_name} |grep "^${com_con}/j-" > /dev/null; then
         # Jira Format
-        issue_no=$(echo ${branch_name} | sed "s~\(feat\|test\)/j-\([a-zA-Z]\+-[0-9]*\).*~\\2~")
+        issue_no=$(echo ${branch_name} | sed "s~${com_con}/j-\([a-zA-Z]\+-[0-9]*\).*~\\2~")
         message="(${issue_no})"
     fi
 
     if [ -z ${message} ]; then exit 0; fi
-    echo "${message}$(cat ${commit_file})" > ${commit_file}
+    echo " ${message}$(cat ${commit_file})" > ${commit_file}
 fi
 
 if [ -e ./.git/hooks/prepare-commit-msg ]; then
