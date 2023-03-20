@@ -43,9 +43,6 @@ git config --global core.hooksPath ${APP_PATH}/hooks
 # Allow push even when local branch and remote branch name doesn't match
 git config --global push.default upstream
 
-# Allow git blame to ignore certain commit as they are not useful code change
-git config --global blame.ignoreRevsFile .git-blame-ignore-revs
-
 ###########
 # Aliases #
 ###########
@@ -63,6 +60,8 @@ git config --global alias.pu pull
 git config --global alias.l 'log --graph --oneline --topo-order --pretty="format:%C(auto)%h %cd %<|(45,trunc)%an%d %s" --date=short --decorate'
 git config --global alias.r restore
 git config --global alias.s status
+git config --global alias.bi '!sh -c "git config --local blame.ignoreRevsFile .git-blame-ignore-revs && touch .git-blame-ignore-revs"'
+git config --global alias.biu 'config --local --unset blame.ignoreRevsFile'
 
 # Grepping through all past commits
 git config --global alias.grepall '!gitgrepall(){ git grep $1 $(git rev-list --all) -- $2; }; gitgrepall'
