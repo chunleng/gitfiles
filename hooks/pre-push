@@ -4,9 +4,10 @@ set -eu
 
 remote=$1
 for commit in `git rev-list $(git branch --show-current) --not --remotes=${remote}`; do
-    # If the commit is written by me
-    if [ "`git log --format='%ae' ${commit}^!`" == "`git config user.email`" ]; then
-        git log --format='%B' -n1|xargs -0 -I {} cog verify {}
+    # If the commit is written by me and not PR merge
+    if [ "`git log --format='%ae' ${commit}^!`" == "`git config user.email`" ] && \
+       [[ "`git log --format='%s' ${commit}^!`" != Merge\ pull\ request* ]]; then
+        git log --format='%B' ${commit}^! -n1|xargs -0 -I {} cog verify {}
     fi
 done
 
