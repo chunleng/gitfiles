@@ -2,6 +2,36 @@
 
 set -eu
 
+has_error=0
+
+# Process each staged modified file
+for f in $(git diff --cached --name-only --diff-filter=M); do
+    diff_output=$(git diff --cached "$f")
+
+    if echo "$diff_output" | grep -q '^\\ No newline at end of file$'; then
+        # Partial changed file is not supported
+        if [[ $(git diff ${f}|wc -l) > 0 ]]; then
+            has_error=1
+            continue
+        fi
+        last_line=$(echo "$diff_output" | tail -1)
+
+        if [[ "$last_line" == "\\ No newline at end of file" ]]; then
+            # Add newline if missing at end of file
+            echo "" >> "$f"
+        else
+            # Remove trailing newline at end of file
+            gsed -i -z '$ s/\n$//' "$f"
+        fi
+
+        git add "$f"
+    fi
+done
+
+if [[ $has_error -eq 1 ]]; then
+    exit 1
+fi
+
 if [ -e ./.git/hooks/pre-commit ]; then
     ./.git/hooks/pre-commit "$@"
 fi
